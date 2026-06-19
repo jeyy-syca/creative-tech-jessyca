@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jessyca Sihite — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink:      #f4b8c8;
+      --pink-soft: #fde8f0;
+      --pink-deep: #a05878;
+      --lavender:  #e2defc;
+      --lav-deep:  #6b62b8;
+      --peach:     #fde8d8;
+      --peach-deep:#b07050;
+      --cream:     #fdf6f0;
+      --text:      #4a3540;
+      --muted:     #a08898;
+      --border:    #f0d8e4;
+      --white:     #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(253,246,240,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 40px;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px; color: var(--pink-deep);
+      letter-spacing: 0.5px;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; color: var(--muted); text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--pink-deep); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 92vh;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #fde8f0 0%, #e8e4fc 40%, #fde8d8 100%);
+      padding: 60px 40px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(244,184,200,.35) 0%, transparent 55%),
+                  radial-gradient(circle at 80% 20%, rgba(226,222,252,.45) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; max-width: 640px; }
+    .hero-avatar {
+      width: 100px; height: 100px; border-radius: 50%;
+      background: var(--pink); border: 4px solid var(--white);
+      margin: 0 auto 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px; color: var(--pink-deep);
+      box-shadow: 0 8px 30px rgba(160,88,120,.18);
+    }
+    .hero-eyebrow {
+      font-size: 12px; letter-spacing: 2.5px; color: var(--pink-deep);
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 48px; line-height: 1.15;
+      color: var(--text); margin-bottom: 16px;
+    }
+    .hero h1 em { font-style: italic; color: var(--pink-deep); }
+    .hero-sub {
+      font-size: 15px; color: var(--muted); max-width: 420px;
+      margin: 0 auto 28px;
+    }
+    .hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .badge {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 20px; padding: 6px 16px;
+      font-size: 12px; color: var(--pink-deep);
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 32px;
+      background: var(--pink-deep); color: var(--white);
+      border: none; border-radius: 30px;
+      padding: 12px 28px; font-size: 14px; font-family: 'DM Sans', sans-serif;
+      cursor: pointer; text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: #8a4060; transform: translateY(-1px); }
+
+    /* ── SECTIONS ── */
+    section { padding: 72px 40px; max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; letter-spacing: 2.5px; color: var(--muted);
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px; color: var(--text); margin-bottom: 36px;
+    }
+    .section-divider {
+      border: none; border-top: 1px solid var(--border);
+      max-width: 900px; margin: 0 auto;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .about-text p { color: var(--muted); margin-bottom: 14px; }
+    .about-text p strong { color: var(--text); font-weight: 500; }
+    .about-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px;
+    }
+    .about-card-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+    }
+    .about-card-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .about-card-icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--pink-soft); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 14px; flex-shrink: 0;
+    }
+    .about-card-text strong { font-size: 13px; font-weight: 500; color: var(--text); display: block; }
+    .about-card-text span { font-size: 11px; color: var(--muted); }
+
+    /* ── SKILLS ── */
+    .skills-section { background: var(--pink-soft); }
+    .skills-section > * { max-width: 900px; margin-left: auto; margin-right: auto; }
+    .skills-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .skill-group h3 {
+      font-size: 13px; font-weight: 500; color: var(--pink-deep);
+      margin-bottom: 14px; letter-spacing: 0.5px;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 20px; padding: 6px 16px;
+      font-size: 12px; color: var(--text);
+    }
+    .skill-tag.tech { background: var(--lavender); border-color: #c8c4ec; color: var(--lav-deep); }
+
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+    .exp-item {
+      display: flex; gap: 20px;
+      padding: 20px 0; border-bottom: 1px solid var(--border);
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-dot-col { display: flex; flex-direction: column; align-items: center; padding-top: 6px; }
+    .exp-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--pink); border: 2px solid var(--pink-deep);
+      flex-shrink: 0;
+    }
+    .exp-line { flex: 1; width: 1px; background: var(--border); margin: 4px 0; }
+    .exp-body { flex: 1; }
+    .exp-body strong { font-size: 15px; font-weight: 500; color: var(--text); }
+    .exp-role { font-size: 13px; color: var(--pink-deep); margin: 2px 0; }
+    .exp-date { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+    .exp-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── PROJECTS ── */
+    .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .proj-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .proj-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(160,88,120,.1); }
+    .proj-icon {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: var(--pink-soft); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 18px; margin-bottom: 14px;
+    }
+    .proj-card h3 { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+    .proj-card p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+    .proj-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .proj-tag {
+      background: var(--peach); border-radius: 10px;
+      padding: 3px 10px; font-size: 11px; color: var(--peach-deep);
+    }
+
+    /* ── ACHIEVEMENTS ── */
+    .ach-section { background: linear-gradient(135deg, #fde8f0 0%, #e8e4fc 100%); }
+    .ach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .ach-card {
+      background: rgba(255,255,255,.75); border: 1px solid var(--border);
+      border-radius: 16px; padding: 20px; text-align: center;
+    }
+    .ach-emoji { font-size: 28px; margin-bottom: 10px; }
+    .ach-card h3 { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+    .ach-card span { font-size: 11px; color: var(--muted); }
+
+    /* ── CONTACT ── */
+    .contact-inner { max-width: 520px; margin: 0 auto; text-align: center; }
+    .contact-inner .section-title { margin-bottom: 12px; }
+    .contact-inner p { color: var(--muted); margin-bottom: 32px; }
+    .contact-chips { display: flex; flex-direction: column; gap: 12px; }
+    .contact-chip {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 14px; padding: 14px 20px;
+      font-size: 13px; color: var(--text); text-decoration: none;
+      transition: border-color .2s, transform .15s;
+    }
+    .contact-chip:hover { border-color: var(--pink); transform: translateX(3px); }
+    .chip-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--pink-soft); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .chip-label { font-size: 11px; color: var(--muted); display: block; }
+    .chip-value { font-size: 13px; color: var(--text); font-weight: 500; }
+    .btn-cv {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 24px;
+      background: var(--pink-deep); color: var(--white);
+      border: none; border-radius: 30px;
+      padding: 13px 30px; font-size: 14px; font-family: 'DM Sans', sans-serif;
+      cursor: pointer; text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-cv:hover { background: #8a4060; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 28px 40px;
+      border-top: 1px solid var(--border);
+      font-size: 12px; color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 12px 20px; }
+      .nav-links { gap: 16px; }
+      section { padding: 48px 20px; }
+      .hero { padding: 60px 20px; }
+      .hero h1 { font-size: 32px; }
+      .about-grid, .skills-cols, .proj-grid, .ach-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Jessyca Sihite</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-avatar">JS</div>
+    <p class="hero-eyebrow">Informatics Engineering · ITERA · GPA 3.72</p>
+    <h1>Hi, I'm <em>Jessyca.</em><br>I build & design with heart.</h1>
+    <p class="hero-sub">Student, organizer, and creative builder passionate about tech, design, and meaningful experiences.</p>
+    <div class="hero-badges">
+      <span class="badge">🌸 Open to opportunities</span>
+      <span class="badge">💻 Web & Robotics</span>
+      <span class="badge">🎨 UI/UX Enthusiast</span>
+    </div>
+    <a href="#contact" class="btn-primary">Say hello ↓</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">Who I am</p>
+  <h2 class="section-title">About me</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a first-year Informatics Engineering student at <strong>Institut Teknologi Sumatera (ITERA)</strong>, currently maintaining a GPA of 3.72.</p>
+      <p>My journey started from SMA 16 Batam where I competed in national science & English olympiads, then continued at ITERA where I've been diving into robotics, web development, and community organizing.</p>
+      <p>I love building things — whether it's a robot prototype, a web project, or a well-run event. Detail, collaboration, and purpose drive everything I do.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-row">
+        <div class="about-card-icon">🎓</div>
+        <div class="about-card-text">
+          <strong>ITERA — Informatics Engineering</strong>
+          <span>Aug 2025 · GPA 3.72/4.00</span>
+        </div>
+      </div>
+      <div class="about-card-row">
+        <div class="about-card-icon">📍</div>
+        <div class="about-card-text">
+          <strong>Batam, Riau Islands</strong>
+          <span>Currently in South Lampung</span>
+        </div>
+      </div>
+      <div class="about-card-row">
+        <div class="about-card-icon">💡</div>
+        <div class="about-card-text">
+          <strong>Interests</strong>
+          <span>UI/UX, Robotics, Public Speaking</span>
+        </div>
+      </div>
+      <div class="about-card-row">
+        <div class="about-card-icon">🏆</div>
+        <div class="about-card-text">
+          <strong>Best Coding — Girls Exploring STEM</strong>
+          <span>Prestasi Junior Indonesia × Caterpillar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="section-divider" />
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills" style="padding: 72px 40px;">
+  <div style="max-width:900px; margin:0 auto;">
+    <p class="section-label">What I bring</p>
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-cols">
+      <div class="skill-group">
+        <h3>Soft Skills</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Public Speaking</span>
+          <span class="skill-tag">Leadership</span>
+          <span class="skill-tag">Peer Teaching</span>
+          <span class="skill-tag">Teamwork</span>
+          <span class="skill-tag">Time Management</span>
+          <span class="skill-tag">Adaptability</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Technical Skills</h3>
+        <div class="skill-tags">
+          <span class="skill-tag tech">Web Development</span>
+          <span class="skill-tag tech">Graphic Design</span>
+          <span class="skill-tag tech">Arduino</span>
+          <span class="skill-tag tech">AutoCAD</span>
+          <span class="skill-tag tech">MySQL</span>
+          <span class="skill-tag tech">Microsoft Excel</span>
+          <span class="skill-tag tech">Visual Studio Code</span>
+          <span class="skill-tag tech">Programming</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">My journey</p>
+  <h2 class="section-title">Experience</h2>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-dot-col"><div class="exp-dot"></div><div class="exp-line"></div></div>
+      <div class="exp-body">
+        <strong>ITERA Dormitory</strong>
+        <p class="exp-role">Floor Secretary</p>
+        <p class="exp-date">Aug 2025 – Present</p>
+        <p class="exp-desc">Managed administrative coordination and resident affairs for TB 4, 5th Floor. Served as primary liaison between residents and dormitory management.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-dot-col"><div class="exp-dot"></div><div class="exp-line"></div></div>
+      <div class="exp-body">
+        <strong>Robotics ITERA</strong>
+        <p class="exp-role">Intern</p>
+        <p class="exp-date">Mar 2026 – Present</p>
+        <p class="exp-desc">Designed robotics systems using AutoCAD and VSCode. Programmed Arduino-based microcontrollers and integrated sensors to build functional prototypes for competition.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-dot-col"><div class="exp-dot"></div><div class="exp-line"></div></div>
+      <div class="exp-body">
+        <strong>PMK ITERA</strong>
+        <p class="exp-role">IT Staff</p>
+        <p class="exp-date">Apr 2026 – Present</p>
+        <p class="exp-desc">Supporting IT needs for a Christian student organization at ITERA, fostering faith, fellowship, and character development.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-dot-col"><div class="exp-dot"></div><div class="exp-line"></div></div>
+      <div class="exp-body">
+        <strong>Himpunan Mahasiswa Informatika ITERA (HMIF)</strong>
+        <p class="exp-role">Active Member</p>
+        <p class="exp-date">Jun 2026 – Present</p>
+        <p class="exp-desc">Participated in soft & hard skill training programs, personal development workshops, and Gemastik competition preparation.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-dot-col"><div class="exp-dot"></div></div>
+      <div class="exp-body">
+        <strong>Baswara Pramasastra Sharing Community</strong>
+        <p class="exp-role">Personal Development Speaker & Admin</p>
+        <p class="exp-date">Jun 2026 – Present</p>
+        <p class="exp-desc">Delivered personal development sessions on self-growth, mindset, and life skills. Managed community administration and coordination of sharing activities.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<hr class="section-divider" />
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Things I've built</p>
+  <h2 class="section-title">Projects</h2>
+  <div class="proj-grid">
+
+    <div class="proj-card">
+      <div class="proj-icon">🏆</div>
+      <h3>Skillz App</h3>
+      <p>Code block-based animation and prototype app designed as a solution for women's skill development. Awarded Best Coding at Girls Exploring STEM Competition.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Best Coding Award</span>
+        <span class="proj-tag">Prototype</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-icon">🤖</div>
+      <h3>Robotics Prototype</h3>
+      <p>Arduino-based robotics system with multiple integrated sensors, designed and developed for national competition preparation at Robotics ITERA.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Arduino</span>
+        <span class="proj-tag">AutoCAD</span>
+        <span class="proj-tag">C++</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-icon">📐</div>
+      <h3>Matrix & Vector Space Tutorial</h3>
+      <p>Delivered two academic tutorial sessions helping peers master Matrix and Vector Space topics ahead of UAS (final exams) at ITERA.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Speaker</span>
+        <span class="proj-tag">Mathematics</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-icon">🎄</div>
+      <h3>KKAI Christmas Event</h3>
+      <p>Organized and coordinated the Christmas Event for KKAI (Keluarga Kristen ITERA), managing full logistics, rundown, and event execution.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Event Organizing</span>
+        <span class="proj-tag">Leadership</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="ach-section" id="achievements" style="padding: 72px 40px;">
+  <div style="max-width:900px; margin: 0 auto;">
+    <p class="section-label">Recognition</p>
+    <h2 class="section-title">Achievements</h2>
+    <div class="ach-grid">
+      <div class="ach-card">
+        <div class="ach-emoji">🏆</div>
+        <h3>Best Coding Award</h3>
+        <span>Girls Exploring STEM · Prestasi Junior Indonesia × Caterpillar Foundation · 2024</span>
+      </div>
+      <div class="ach-card">
+        <div class="ach-emoji">🥈</div>
+        <h3>Silver Medal</h3>
+        <span>Olympic English · Smart Student · Batam, 2023</span>
+      </div>
+      <div class="ach-card">
+        <div class="ach-emoji">⭐</div>
+        <h3>National Finalist</h3>
+        <span>English & Science Olympiad · Global House · Malang, 2023</span>
+      </div>
+      <div class="ach-card">
+        <div class="ach-emoji">📊</div>
+        <h3>Excel Intermediate</h3>
+        <span>Intensive Bootcamp · PT Ebiz Karisma Internasional · 2026</span>
+      </div>
+      <div class="ach-card">
+        <div class="ach-emoji">🌐</div>
+        <h3>Web3 Seminar</h3>
+        <span>Binance Academy · South Lampung, 2026</span>
+      </div>
+      <div class="ach-card">
+        <div class="ach-emoji">🎓</div>
+        <h3>GPA 3.72/4.00</h3>
+        <span>Informatics Engineering · ITERA · 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <p class="section-label">Let's connect</p>
+    <h2 class="section-title">Contact</h2>
+    <p>Feel free to reach out — whether it's about a project, collaboration, or just saying hi 🌸</p>
+    <div class="contact-chips">
+      <a href="mailto:jessyca.125140083@student.itera.ac.id" class="contact-chip">
+        <div class="chip-icon">✉️</div>
+        <div>
+          <span class="chip-label">Email</span>
+          <span class="chip-value">jessyca.125140083@student.itera.ac.id</span>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/jessyca-sihite-438154350/" target="_blank" class="contact-chip">
+        <div class="chip-icon">💼</div>
+        <div>
+          <span class="chip-label">LinkedIn</span>
+          <span class="chip-value">jessycasihite-438154350</span>
+        </div>
+      </a>
+      <a href="tel:+6281548933162" class="contact-chip">
+        <div class="chip-icon">📱</div>
+        <div>
+          <span class="chip-label">Phone / WhatsApp</span>
+          <span class="chip-value">+62 815 4893 3162</span>
+        </div>
+      </a>
+    </div>
+    <a href="CV_JESSYCA SIHITE_125140083.pdf" download class="btn-cv">⬇ Download CV</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Made with 🌸 by Jessyca Sihite · 2026</p>
+</footer>
+
+</body>
+</html>
